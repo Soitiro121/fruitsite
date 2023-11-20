@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Busca de Filmes por Nome</h2>
+    <form action="{% url 'fruits:search' %}">
+        <p>
+            <label for="id_query">Título:</label>
+            <input type="text" name="query" id="id_query" />
+        </p>
+        <button type="submit">Buscar</button>
+    </form>
+    <h2>Resultado da Busca</h2>
+    {% if fruit_list %}
+        <section class="lista-de-cards">
+            {% for fruit in fruit_list %}
+                <article class="card">
+                    <img src="{{ fruit.poster_url }}" alt="Poster do filme {{ fruit.name }}">
+                    <p>{{ fruit.name }} ({{ fruit.release_year }})</p>
+                </article>
+            {% endfor %}
+        </section>
+    {% else %}
+        <p>Não foi encontrado nenhum filme para a busca.</p>
+    {% endif %}
+{% endblock content %}

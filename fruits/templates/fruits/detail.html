@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ fruit.name }} ({{ fruit.release_year }})
+{% endblock title %}
+{% block content %}
+    <h2>Detalhes do Filme {{ fruit.name }} ({{ fruit.release_year }})</h2>
+    <section class="dados-de-filme">
+        <img src="{{ fruit.poster_url }}" alt="Poster do filme {{ fruit.name }}" />
+        <ul>
+            <li>Nome: {{ fruit.name }}</li>
+            <li>Ano de Lançamento: {{ fruit.release_year }}</li>
+        </ul>
+    </section>
+{% endblock content %}
