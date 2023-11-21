@@ -2,9 +2,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from .temp_data import fruit_data
-from .models import Fruit
+from .models import Fruit, Review
 from django.views import generic
-from .forms import FruitForm
+from .forms import FruitForm, ReviewForm
 
 
 class FruitListView(generic.ListView):
@@ -47,3 +47,18 @@ def create_fruit(request):
         form = FruitForm()
     context = {'form': form}
     return render(request, 'fruits/create.html', context)
+
+def create_review(request, pk):
+    fruit = get_object_or_404(Fruit, pk=pk)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review_author = form.cleaned_data['author']
+            review_text = form.cleaned_data['text']
+            fruit.review_set.create(author=review_author, text=review_text)
+            return HttpResponseRedirect(
+                reverse('fruits:detail', args=(pk, )))
+    else:
+        form = ReviewForm()
+    context = {'form': form, 'fruit': fruit}
+    return render(request, 'fruits/review.html', context)

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Resenhar Filme {{ fruit.name }} ({{ fruit.release_year }})</h2>
+
+<form action="{% url 'fruits:review' fruit.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Postar Resenha</button>
+</form>
+
+<p><a href="{% url 'fruits:detail' fruit.id %}">Voltar para a página do filme</a></p>
+{% endblock content %}

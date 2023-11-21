@@ -1,11 +1,10 @@
 from django.forms import ModelForm
-from .models import Fruit
+from .models import Fruit, Review
 
-class FruitForm(ModelForm):
+class ReviewForm(ModelForm):
     class Meta:
-        model = Fruit
+        model = Review
         fields = [
-            'name',
-            'release_year',
-            'poster_url',
+            'author',
+            'text',
         ]
