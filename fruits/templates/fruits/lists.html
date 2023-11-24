@@ -3,7 +3,7 @@
     Listas
 {% endblock title %}
 {% block content %}
-    <h2>Listas de Filmes</h2>
+    <h2>Listas de Frutos</h2>
     <section>
         {% for list in list_list %}
             <hr>
@@ -15,7 +15,7 @@
                     {% for fruit in list.fruits.all %}
                         <div class="card">
                             <a href="{% url 'fruits:detail' fruit.id %}">
-                                <img src="{{ fruit.poster_url }}" alt="Poster do filme {{ fruit.name }}">
+                                <img src="{{ fruit.poster_url }}" alt="Poster do fruto {{ fruit.name }}">
                             </a>
                             <p>{{ fruit.name }} ({{ fruit.release_year }})</p>
                         </div>

@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Todas as Frutas</h2>
+    <h2>Todas os Frutos</h2>
     <section>
         <p>
-            Muitos resultados? <a href="{% url 'fruits:search' %}">Buscar Filmes</a>
-        </p>
-        <p>
-            Não encontrou o filme?
-            <a href="{% url 'fruits:create' %}">Adicionar Novo Filme</a>
+            Muitos resultados? <a href="{% url 'fruits:search' %}">Buscar Frutos</a>
         </p>
         {% if perms.fruits.add_fruit %}
-        <p>Não encontrou o filme? <a href="{% url 'fruits:create' %}">Adicionar Novo Filme</a></p>
+        <p>Não encontrou o fruto? <a href="{% url 'fruits:create' %}">Adicionar Novo Fruto</a></p>
         {% endif%}
     </section>
     {% if last_fruit %}
@@ -19,7 +15,7 @@
     <section class="lista-de-cards">
         <article class="small-card">
             <a href="{% url 'fruits:detail' last_fruit.id %}"><img src="{{ last_fruit.poster_url }}"
-                    alt="Poster do filme {{ last_fruit.name}}"></a>
+                    alt="Poster do fruto {{ last_fruit.name}}"></a>
         </article>
     </section>
     {% endif %}

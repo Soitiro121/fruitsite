@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Busca de Filmes por Nome</h2>
+    <h2>Busca de Frutos por Nome</h2>
     <form action="{% url 'fruits:search' %}">
         <p>
             <label for="id_query">Título:</label>
@@ -13,12 +13,12 @@
         <section class="lista-de-cards">
             {% for fruit in fruit_list %}
                 <article class="card">
-                    <img src="{{ fruit.poster_url }}" alt="Poster do filme {{ fruit.name }}">
+                    <img src="{{ fruit.poster_url }}" alt="Poster do fruto {{ fruit.name }}">
                     <p>{{ fruit.name }} ({{ fruit.release_year }})</p>
                 </article>
             {% endfor %}
         </section>
     {% else %}
-        <p>Não foi encontrado nenhum filme para a busca.</p>
+        <p>Não foi encontrado nenhum fruto para a busca.</p>
     {% endif %}
 {% endblock content %}
